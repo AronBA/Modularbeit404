@@ -6,6 +6,7 @@ public class main {
         JButton Start = new JButton("Start");
         Frame.setSize(1500,700);
         Frame.add(Start);
+        Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Frame.setVisible(true);
 
     }
