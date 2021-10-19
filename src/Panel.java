@@ -35,7 +35,7 @@ public class Panel extends JPanel {
         for(Rectangle r : rects) {
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.GREEN);
-            //g2d.fillRect(r.x, r.y, r.width, r.height);
+            g2d.fillRect(r.x, r.y, r.width, r.height);
             AffineTransform old = g2d.getTransform();
             g2d.translate(r.x+PIPE_W/2, r.y+PIPE_H/2);
             if(r.y < Game.HEIGHT/2) {

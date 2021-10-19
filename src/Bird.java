@@ -6,7 +6,7 @@ public class Bird extends JPanel {
     public static final int RAD = 25;
     public Bird(){
         x = Game.WIDTH/4;
-        y = Game.HEIGHT/2;
+        y = Game.HEIGHT/4;
     }
     public void physics() {
         x+=vx;
@@ -19,11 +19,11 @@ public class Bird extends JPanel {
     }
 
     public void up() {
-        vy = -5;
+        vy = -2;
     }
 
     public void down() {
-        vy = +5;
+        vy = +2;
     }
 
     public void reset() {
