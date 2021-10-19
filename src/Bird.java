@@ -1,3 +1,16 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
+
 public class Bird {
     public float x, y, vx, vy;
     public static final int RAD = 25;
