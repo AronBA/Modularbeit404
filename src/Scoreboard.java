@@ -23,7 +23,7 @@ public class Scoreboard extends JFrame{
         backbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                dispose();
                 JFrame frame = new Menu("Crappy Bird");
                 frame.setVisible(true);
 

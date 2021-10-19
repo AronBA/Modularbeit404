@@ -48,11 +48,6 @@ public class Panel extends JPanel {
         g.setColor(Color.BLACK);
         g.drawString("Score: "+fb.getScore(), 10, 20);
 
-        if(fb.paused()) {
-            g.setFont(pauseFont);
-            g.setColor(new Color(0,0,0,170));
-            g.drawString("Crappy Bird", Game.WIDTH/2-100, Game.HEIGHT/2-100);
-            g.drawString("PRESS SPACE TO BEGIN", Game.WIDTH/2-300, Game.HEIGHT/2+50);
-        }
+
     }
 }

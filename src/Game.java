@@ -33,7 +33,7 @@ public class Game implements ActionListener, KeyListener{
         frame.setVisible(true);
         frame.addKeyListener(this);
 
-        paused = true;
+        paused = false;
 
         t = new Timer(500 / FPS, this);
         t.start();
@@ -82,7 +82,7 @@ public class Game implements ActionListener, KeyListener{
                 if ((time/10) > highscore){
                     highscore = time/10;
                 }
-                frame.setVisible(false);
+                frame.dispose();
                 JFrame frame = new Menu("Crappy Bird");
                 frame.setVisible(true);
 
@@ -103,9 +103,7 @@ public class Game implements ActionListener, KeyListener{
         else if(e.getKeyCode()==KeyEvent.VK_DOWN){
             bird.down();
         }
-        else if(e.getKeyCode()==KeyEvent.VK_SPACE) {
-            paused = false;
-        }
+
     }
 
     public void keyReleased(KeyEvent e) { }
@@ -115,9 +113,7 @@ public class Game implements ActionListener, KeyListener{
     public int getScore() {
         return time/10;
     }
-    public boolean paused() {
-        return paused;
-    }
+
 
     }
 
