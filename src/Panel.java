@@ -1,17 +1,14 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Panel extends JPanel {
 
-    private Bird bird;
-    private ArrayList<Rectangle> rects;
-    private Game fb;
-    private Font scoreFont, pauseFont;
+    private final Bird bird;
+    private final ArrayList<Rectangle> rects;
+    private final Game fb;
+    private final Font scoreFont;
     public static final Color bg = new Color(31, 66, 210);
     public static final int PIPE_W = 50, PIPE_H = 30;
 
@@ -22,7 +19,6 @@ public class Panel extends JPanel {
         this.bird = bird;
         this.rects = rects;
         scoreFont = new Font("Arial", Font.BOLD, 18);
-        pauseFont = new Font("Arial", Font.BOLD, 48);
 
 
     }

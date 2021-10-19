@@ -6,7 +6,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-
 public class Game implements ActionListener, KeyListener{
 
     public static final int FPS = 60, WIDTH = 1600, HEIGHT = 900;
@@ -16,14 +15,13 @@ public class Game implements ActionListener, KeyListener{
     private JPanel panel;
     private ArrayList<Rectangle> rects;
     private int time, scroll;
-    private Timer t;
 
     private boolean paused;
 
     public void go() {
         frame = new JFrame("Flappy Bird");
         bird = new Bird();
-        rects = new ArrayList<Rectangle>();
+        rects = new ArrayList<>();
         panel = new Panel(this, bird, rects);
         frame.add(panel);
         frame.setSize(WIDTH, HEIGHT);
@@ -35,7 +33,7 @@ public class Game implements ActionListener, KeyListener{
 
         paused = false;
 
-        t = new Timer(500 / FPS, this);
+        Timer t = new Timer(500 / FPS, this);
         t.start();
     }
 
@@ -59,7 +57,7 @@ public class Game implements ActionListener, KeyListener{
                 rects.add(r);
                 rects.add(r2);
             }
-            ArrayList<Rectangle> toRemove = new ArrayList<Rectangle>();
+            ArrayList<Rectangle> toRemove = new ArrayList<>();
             boolean game = true;
             for(Rectangle r : rects) {
                 r.x-=3;
@@ -74,7 +72,7 @@ public class Game implements ActionListener, KeyListener{
             time++;
             scroll++;
 
-            if(bird.y > HEIGHT || bird.y+bird.RAD < 0) {
+            if(bird.y > HEIGHT || bird.y+ Bird.RAD < 0) {
                 game = false;
             }
 
