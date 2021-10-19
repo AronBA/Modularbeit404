@@ -1,5 +1,3 @@
-import secret.GamePanel;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,6 +29,7 @@ public class Game implements ActionListener, KeyListener{
 
         frame.setSize(WIDTH, HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
         frame.setVisible(true);
         frame.addKeyListener(this);
 
@@ -49,9 +48,9 @@ public class Game implements ActionListener, KeyListener{
         if(!paused) {
             bird.physics();
             if(scroll % 90 == 0) {
-                Rectangle r = new Rectangle(WIDTH, 0, GamePanel.PIPE_W, (int) ((Math.random()*HEIGHT)/5f + (0.2f)*HEIGHT));
+                Rectangle r = new Rectangle(WIDTH, 0, Panel.PIPE_W, (int) ((Math.random()*HEIGHT)/5f + (0.2f)*HEIGHT));
                 int h2 = (int) ((Math.random()*HEIGHT)/5f + (0.2f)*HEIGHT);
-                Rectangle r2 = new Rectangle(WIDTH, HEIGHT - h2, GamePanel.PIPE_W, h2);
+                Rectangle r2 = new Rectangle(WIDTH, HEIGHT - h2, Panel.PIPE_W, h2);
                 rects.add(r);
                 rects.add(r2);
             }
@@ -101,8 +100,10 @@ public class Game implements ActionListener, KeyListener{
         }
     }
 
-    public void keyReleased(KeyEvent e) {}
-    public void keyTyped(KeyEvent e) {}
+    public void keyReleased(KeyEvent e) { }
+    public void keyTyped(KeyEvent e) {
+
+    }
     public int getScore() {
         return time;
     }

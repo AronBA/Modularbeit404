@@ -1,13 +1,26 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package secret;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
+/**
+ *
+ * @author User
+ */
 public class GamePanel extends JPanel {
 
     private Bird bird;
@@ -36,7 +49,7 @@ public class GamePanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         g.setColor(bg);
-        g.fillRect(0,0, FlappyBird.WIDTH, FlappyBird.HEIGHT);
+        g.fillRect(0,0,FlappyBird.WIDTH,FlappyBird.HEIGHT);
         bird.update(g);
         g.setColor(Color.RED);
         for(Rectangle r : rects) {

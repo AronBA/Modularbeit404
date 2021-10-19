@@ -34,7 +34,6 @@ public class Panel extends JPanel {
     public void paintComponent(Graphics g) {
         //g.setColor(bg);
         //g.fillRect(0,0, Game.WIDTH, Game.HEIGHT);
-
         bird.update(g);
         g.setColor(Color.RED);
         for(Rectangle r : rects) {
@@ -47,8 +46,7 @@ public class Panel extends JPanel {
                 g2d.translate(0, r.height);
                 g2d.rotate(Math.PI);
             }
-            //g2d.drawRect( -PIPE_W/2, -PIPE_H/2, secret.GamePanel.PIPE_W, secret.GamePanel.PIPE_H);
-            g2d.drawRect(-PIPE_W/2, PIPE_H/2, secret.GamePanel.PIPE_W, r.height);
+            g2d.drawRect(-PIPE_W/2, PIPE_H/2, Panel.PIPE_W, r.height);
             g2d.setTransform(old);
         }
         g.setFont(scoreFont);
@@ -58,7 +56,7 @@ public class Panel extends JPanel {
         if(fb.paused()) {
             g.setFont(pauseFont);
             g.setColor(new Color(0,0,0,170));
-            g.drawString("PAUSED", Game.WIDTH/2-100, Game.HEIGHT/2-100);
+            g.drawString("Crappy Bird", Game.WIDTH/2-100, Game.HEIGHT/2-100);
             g.drawString("PRESS SPACE TO BEGIN", Game.WIDTH/2-300, Game.HEIGHT/2+50);
         }
     }

@@ -1,10 +1,20 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package secret;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
 
+/**
+ *
+ * @author User
+ */
 public class Bird {
     public float x, y, vx, vy;
     public static final int RAD = 25;
@@ -33,8 +43,8 @@ public class Bird {
     }
 
     public void reset() {
-        x = FlappyBird.WIDTH/2;
-        y = FlappyBird.HEIGHT/2;
+        x = 640/2;
+        y = 640/2;
         vx = vy = 0;
     }
 }
