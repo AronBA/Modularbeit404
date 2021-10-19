@@ -13,7 +13,7 @@ public class Menu extends JFrame {
 
     public Menu(String title){
         super(title);
-        setSize(1600,900);
+        setSize(Game.WIDTH,Game.HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -24,6 +24,7 @@ public class Menu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new Game().go();
+                setVisible(false);
 
 
             }
@@ -34,9 +35,13 @@ public class Menu extends JFrame {
                 System.exit(0);
             }
         });
+
         scoreboardButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                new Scoreboard("Scoreboard");
+                setVisible(false);
+
 
             }
         });

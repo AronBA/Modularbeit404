@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Game implements ActionListener, KeyListener{
 
     public static final int FPS = 60, WIDTH = 1600, HEIGHT = 900;
-
+    public static int highscore = 0;
     private Bird bird;
     private JFrame frame;
     private JPanel panel;
@@ -46,12 +46,14 @@ public class Game implements ActionListener, KeyListener{
 
     }
     public void actionPerformed(ActionEvent e) {
+
+
         panel.repaint();
         if(!paused) {
             bird.physics();
             if(scroll % 90 == 0) {
-                int h1 = (int) ((Math.random()*HEIGHT)/5 + (0.2)*HEIGHT);
-                int h2 = (int) ((Math.random()*HEIGHT)/5 + (0.2)*HEIGHT);
+                int h1 = (int) ((Math.random()*HEIGHT)/5 + (0.3*Math.random())*HEIGHT);
+                int h2 = (int) ((Math.random()*HEIGHT)/5 + (0.4 * Math.random())*HEIGHT);
                 Rectangle r = new Rectangle(WIDTH, 0, Panel.PIPE_W, h1);
                 Rectangle r2 = new Rectangle(WIDTH, HEIGHT-h2, Panel.PIPE_W, h2);
                 rects.add(r);
@@ -65,7 +67,6 @@ public class Game implements ActionListener, KeyListener{
                     toRemove.add(r);
                 }
                 if(r.contains(bird.x, bird.y)){
-                    JOptionPane.showMessageDialog(frame, "You lose!\n"+"Your score was: "+time+".");
                     game = false;
                 }
             }
@@ -78,6 +79,13 @@ public class Game implements ActionListener, KeyListener{
             }
 
             if(!game) {
+                if ((time/10) > highscore){
+                    highscore = time/10;
+                }
+                frame.setVisible(false);
+                JFrame frame = new Menu("Crappy Bird");
+                frame.setVisible(true);
+
                 rects.clear();
                 bird.reset();
                 time = 0;
@@ -105,7 +113,7 @@ public class Game implements ActionListener, KeyListener{
 
     }
     public int getScore() {
-        return time;
+        return time/10;
     }
     public boolean paused() {
         return paused;
