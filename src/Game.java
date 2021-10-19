@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Game implements ActionListener, KeyListener{
 
-    public static final int FPS = 60, WIDTH = 1000, HEIGHT = 500;
+    public static final int FPS = 60, WIDTH = 1600, HEIGHT = 900;
 
     private Bird bird;
     private JFrame frame;
@@ -26,16 +26,22 @@ public class Game implements ActionListener, KeyListener{
         rects = new ArrayList<Rectangle>();
         panel = new Panel(this, bird, rects);
         frame.add(panel);
-
+        /*JLabel background;
+        ImageIcon image_background = new ImageIcon("../Docs/bg.png");
+        background = new JLabel("", image_background, JLabel.CENTER);
+        background.setBounds(0, 0, Game.WIDTH, Game.HEIGHT);
+        frame.add(background);
+        */
         frame.setSize(WIDTH, HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
         frame.addKeyListener(this);
 
         paused = true;
 
-        t = new Timer(1000 / FPS, this);
+        t = new Timer(500 / FPS, this);
         t.start();
     }
 

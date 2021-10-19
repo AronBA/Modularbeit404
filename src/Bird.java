@@ -19,11 +19,11 @@ public class Bird extends JPanel {
     }
 
     public void up() {
-        vy = -8;
+        vy = -5;
     }
 
     public void down() {
-        vy = +8;
+        vy = +5;
     }
 
     public void reset() {

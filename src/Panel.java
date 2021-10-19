@@ -12,16 +12,12 @@ public class Panel extends JPanel {
     private ArrayList<Rectangle> rects;
     private Game fb;
     private Font scoreFont, pauseFont;
-    public static final Color bg = new Color(0, 158, 158);
+    public static final Color bg = new Color(44, 203, 67);
     public static final int PIPE_W = 50, PIPE_H = 30;
 
 
 
     public Panel(Game fb, Bird bird, ArrayList<Rectangle> rects) {
-        JLabel background;
-        ImageIcon image_background = new ImageIcon("../Docs/bg.png");
-        background = new JLabel("", image_background, JLabel.CENTER);
-        background.setBounds(0, 0, Game.WIDTH, Game.HEIGHT);
         this.fb = fb;
         this.bird = bird;
         this.rects = rects;
@@ -32,8 +28,8 @@ public class Panel extends JPanel {
     }
     @Override
     public void paintComponent(Graphics g) {
-        //g.setColor(bg);
-        //g.fillRect(0,0, Game.WIDTH, Game.HEIGHT);
+        g.setColor(bg);
+        g.fillRect(0,0, Game.WIDTH, Game.HEIGHT);
         bird.update(g);
         g.setColor(Color.RED);
         for(Rectangle r : rects) {
