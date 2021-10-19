@@ -26,13 +26,7 @@ public class Scoreboard extends JFrame{
                 dispose();
                 JFrame frame = new Menu("Crappy Bird");
                 frame.setVisible(true);
-
-
-
             }
         });
     }
-
-
-
 }

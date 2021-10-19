@@ -9,8 +9,6 @@ public class Menu extends JFrame {
     private JButton exitButton;
     private JButton scoreboardButton;
 
-
-
     public Menu(String title){
         super(title);
         setSize(1600,900);
@@ -25,8 +23,6 @@ public class Menu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 new Game().go();
                 dispose();
-
-
             }
         });
         exitButton.addActionListener(new ActionListener() {
@@ -41,13 +37,7 @@ public class Menu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 new Scoreboard("Scoreboard");
                 dispose();
-
-
             }
         });
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }

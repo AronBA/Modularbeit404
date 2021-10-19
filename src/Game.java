@@ -113,7 +113,4 @@ public class Game implements ActionListener, KeyListener{
     public int getScore() {
         return time/10;
     }
-
-
-    }
-
+}
