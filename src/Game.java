@@ -40,9 +40,11 @@ public class Game implements ActionListener, KeyListener{
     }
 
 
-        public static void main(String[] args) {
-            new Game().go();
-        }
+    public static void main(String[] args) {
+        JFrame frame = new Menu("Crappy Bird");
+        frame.setVisible(true);
+
+    }
     public void actionPerformed(ActionEvent e) {
         panel.repaint();
         if(!paused) {
