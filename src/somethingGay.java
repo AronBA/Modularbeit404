@@ -13,11 +13,12 @@ public class somethingGay extends JPanel{
         Startscreen.add(Scoreboard, BorderLayout.WEST);
         Startscreen.add(Start, BorderLayout.CENTER);
         Startscreen.add(Exit, BorderLayout.EAST);
+        //Frame.add(Startscreen);
     }
     public static void main(String[] args) {
         JFrame Frame = new JFrame();
         Startscreen();
-        //Frame.add(Startscreen);
+
         Frame.setSize(1500,700);
         Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Frame.setVisible(true);
