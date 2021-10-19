@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Game implements ActionListener, KeyListener{
 
     public static final int FPS = 60, WIDTH = 1600, HEIGHT = 900;
-    int highscore = 0;
+    public static int highscore = 0;
     private Bird bird;
     private JFrame frame;
     private JPanel panel;
@@ -79,8 +79,8 @@ public class Game implements ActionListener, KeyListener{
             }
 
             if(!game) {
-                if (time > highscore){
-                    highscore = time;
+                if ((time/10) > highscore){
+                    highscore = time/10;
                 }
                 frame.setVisible(false);
                 JFrame frame = new Menu("Crappy Bird");

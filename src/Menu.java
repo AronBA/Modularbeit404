@@ -13,7 +13,7 @@ public class Menu extends JFrame {
 
     public Menu(String title){
         super(title);
-        setSize(1600,900);
+        setSize(Game.WIDTH,Game.HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

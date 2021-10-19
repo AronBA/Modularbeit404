@@ -1,19 +1,36 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Scoreboard extends JFrame{
     private JPanel mainPanel;
-    private JList list1;
+    private JLabel scorelabel;
+    private JLabel numberlabel;
+    private JButton backbutton;
 
     public Scoreboard(String title){
         super(title);
-        setSize(1600,900);
+        setSize(Game.WIDTH,Game.HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         setContentPane(mainPanel);
         pack();
         setVisible(true);
+        String s = String.valueOf(Game.highscore);
+        numberlabel.setText(s);
 
+        backbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                JFrame frame = new Menu("Crappy Bird");
+                frame.setVisible(true);
+
+
+
+            }
+        });
     }
 
 
