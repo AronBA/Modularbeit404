@@ -1,6 +1,6 @@
-#Crappy Bird
-##About
+# Crappy Bird
+## About
 Trash FlappyBird clone in Java.
 I am depressed
-##How to Install
+## How to Install
 you just don't
