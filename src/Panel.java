@@ -12,7 +12,7 @@ public class Panel extends JPanel {
     private ArrayList<Rectangle> rects;
     private Game fb;
     private Font scoreFont, pauseFont;
-    public static final Color bg = new Color(44, 203, 67);
+    public static final Color bg = new Color(31, 66, 210);
     public static final int PIPE_W = 50, PIPE_H = 30;
 
 
@@ -31,7 +31,6 @@ public class Panel extends JPanel {
         g.setColor(bg);
         g.fillRect(0,0, Game.WIDTH, Game.HEIGHT);
         bird.update(g);
-        g.setColor(Color.RED);
         for(Rectangle r : rects) {
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.GREEN);
@@ -42,7 +41,7 @@ public class Panel extends JPanel {
                 g2d.translate(0, r.height);
                 g2d.rotate(Math.PI);
             }
-            g2d.drawRect(-PIPE_W/2, PIPE_H/2, Panel.PIPE_W, r.height);
+            //g2d.drawRect(-PIPE_W/2, PIPE_H/2, Panel.PIPE_W, r.height);
             g2d.setTransform(old);
         }
         g.setFont(scoreFont);

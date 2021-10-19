@@ -26,12 +26,6 @@ public class Game implements ActionListener, KeyListener{
         rects = new ArrayList<Rectangle>();
         panel = new Panel(this, bird, rects);
         frame.add(panel);
-        /*JLabel background;
-        ImageIcon image_background = new ImageIcon("../Docs/bg.png");
-        background = new JLabel("", image_background, JLabel.CENTER);
-        background.setBounds(0, 0, Game.WIDTH, Game.HEIGHT);
-        frame.add(background);
-        */
         frame.setSize(WIDTH, HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
@@ -68,7 +62,7 @@ public class Game implements ActionListener, KeyListener{
                 if(r.x + r.width <= 0) {
                     toRemove.add(r);
                 }
-                if(r.contains(bird.x, bird.y)) {
+                if(r.contains(bird.x, bird.y)){
                     JOptionPane.showMessageDialog(frame, "You lose!\n"+"Your score was: "+time+".");
                     game = false;
                 }

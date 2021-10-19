@@ -14,21 +14,21 @@ public class Bird extends JPanel {
     }
 
     public void update(Graphics g) {
-        g.setColor(Color.BLACK);
-        g.drawOval(Math.round(x-RAD),Math.round(y-RAD),2*RAD,2*RAD);
+        g.setColor(Color.YELLOW);
+        g.fillOval(Math.round(x-RAD),Math.round(y-RAD),2*RAD,2*RAD);
     }
 
     public void up() {
-        vy = -2;
+        vy = -3;
     }
 
     public void down() {
-        vy = +2;
+        vy = +3;
     }
 
     public void reset() {
         x = Game.WIDTH/4;
-        y = Game.HEIGHT/2;
+        y = Game.HEIGHT/4;
         vx = vy = 0;
     }
 }
