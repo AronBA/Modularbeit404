@@ -1,26 +1,17 @@
+import secret.GamePanel;
 
-import java.awt.Image;
-import java.awt.Rectangle;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
-/**
- *
- * @author User
- */
-public class FlappyBird implements ActionListener, KeyListener {
 
-    public static final int FPS = 60, WIDTH = 640, HEIGHT = 480;
+public class Game implements ActionListener, KeyListener{
+
+    public static final int FPS = 60, WIDTH = 1000, HEIGHT = 500;
 
     private Bird bird;
     private JFrame frame;
@@ -35,7 +26,7 @@ public class FlappyBird implements ActionListener, KeyListener {
         frame = new JFrame("Flappy Bird");
         bird = new Bird();
         rects = new ArrayList<Rectangle>();
-        panel = new GamePanel(this, bird, rects);
+        panel = new Panel(this, bird, rects);
         frame.add(panel);
 
         frame.setSize(WIDTH, HEIGHT);
@@ -45,14 +36,14 @@ public class FlappyBird implements ActionListener, KeyListener {
 
         paused = true;
 
-        t = new Timer(1000/FPS, this);
+        t = new Timer(1000 / FPS, this);
         t.start();
     }
-    public static void main(String[] args) {
-        new FlappyBird().go();
-    }
 
-    @Override
+
+        public static void main(String[] args) {
+            new Game().go();
+        }
     public void actionPerformed(ActionEvent e) {
         panel.repaint();
         if(!paused) {
@@ -97,26 +88,27 @@ public class FlappyBird implements ActionListener, KeyListener {
         }
     }
 
-    public int getScore() {
-        return time;
-    }
-
+    @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode()==KeyEvent.VK_UP) {
-            bird.jump();
+            bird.up();
+        }
+        else if(e.getKeyCode()==KeyEvent.VK_DOWN){
+            bird.down();
         }
         else if(e.getKeyCode()==KeyEvent.VK_SPACE) {
             paused = false;
         }
     }
-    public void keyReleased(KeyEvent e) {
 
+    public void keyReleased(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {}
+    public int getScore() {
+        return time;
     }
-    public void keyTyped(KeyEvent e) {
-
-    }
-
     public boolean paused() {
         return paused;
     }
-}
+
+    }
+

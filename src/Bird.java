@@ -1,46 +1,34 @@
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.geom.AffineTransform;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
-public class Bird {
-    public float x, y, vx, vy;
+public class Bird extends JPanel {
+    public int x, y, vx, vy;
     public static final int RAD = 25;
-    private Image img;
-    public Bird() {
-        x = FlappyBird.WIDTH/2;
-        y = FlappyBird.HEIGHT/2;
-        try {
-            img = ImageIO.read(new File("sticker,375x360.u2.png"));
-        }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
+    public Bird(){
+        x = Game.WIDTH/4;
+        y = Game.HEIGHT/2;
     }
     public void physics() {
         x+=vx;
         y+=vy;
-        vy+=0.5f;
     }
+
     public void update(Graphics g) {
         g.setColor(Color.BLACK);
-        g.drawImage(img, Math.round(x-RAD),Math.round(y-RAD),2*RAD,2*RAD, null);
+        g.drawOval(Math.round(x-RAD),Math.round(y-RAD),2*RAD,2*RAD);
     }
-    public void jump() {
+
+    public void up() {
         vy = -8;
     }
 
+    public void down() {
+        vy = +8;
+    }
+
     public void reset() {
-        x = 640/2;
-        y = 640/2;
+        x = Game.WIDTH/4;
+        y = Game.HEIGHT/2;
         vx = vy = 0;
     }
 }
