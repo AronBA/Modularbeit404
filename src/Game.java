@@ -53,9 +53,9 @@ public class Game implements ActionListener, KeyListener{
             bird.physics();
             if(scroll % 90 == 0) {
                 int h1 = (int) ((Math.random()*HEIGHT)/5 + (0.3*Math.random())*HEIGHT);
-                int h2 = (int) ((Math.random()*HEIGHT)/5 + (0.4 * Math.random())*HEIGHT);
+                int h2 = HEIGHT/(3+time/2000);
                 Rectangle r = new Rectangle(WIDTH, 0, Panel.PIPE_W, h1);
-                Rectangle r2 = new Rectangle(WIDTH, HEIGHT-h2, Panel.PIPE_W, h2);
+                Rectangle r2 = new Rectangle(WIDTH, h1+h2, Panel.PIPE_W, HEIGHT-(h1+h2));
                 rects.add(r);
                 rects.add(r2);
             }
@@ -113,7 +113,7 @@ public class Game implements ActionListener, KeyListener{
     public void keyReleased(KeyEvent e) { }
     public void keyTyped(KeyEvent e) {}
     public int getScore() {
-        return time/10;
+        return Math.max(time / 10 - 40, 0);
     }
     public boolean paused() {
         return paused;

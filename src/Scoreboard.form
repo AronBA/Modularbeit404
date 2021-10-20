@@ -20,7 +20,7 @@
           <font name="Consolas" size="72"/>
           <foreground color="-4803397"/>
           <opaque value="false"/>
-          <text value="HighestScore"/>
+          <text value="Scoreboard"/>
         </properties>
       </component>
       <hspacer id="3d61d">

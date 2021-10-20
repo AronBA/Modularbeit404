@@ -8,7 +8,7 @@ public class Panel extends JPanel {
     private final Bird bird;
     private final ArrayList<Rectangle> rects;
     private final Game fb;
-    private final Font scoreFont, pauseFont;
+    private final Font scoreFont, pauseFont, overFont;
     public static Color bg;
     public static Color Pipes;
     public static final int PIPE_W = 50, PIPE_H = 30;
@@ -20,7 +20,8 @@ public class Panel extends JPanel {
         this.bird = bird;
         this.rects = rects;
         scoreFont = new Font("Arial", Font.BOLD, 18);
-        pauseFont = new Font("Arial", Font.BOLD, 48);
+        pauseFont = new Font("Arial", Font.BOLD, 30);
+        overFont = new Font("Arial", Font.BOLD, 72);
 
     }
     @Override
@@ -44,12 +45,17 @@ public class Panel extends JPanel {
         g.setFont(scoreFont);
         g.setColor(Color.BLACK);
         g.drawString("Score: "+fb.getScore(), 10, 20);
+
         if(fb.paused()) {
             bg = new Color(65, 75, 141);
             Pipes = new Color(24, 122, 42);
+            g.setFont(overFont);
+            g.setColor(Color.RED);
+            g.drawString("GAME OVER", Game.WIDTH/2-200, Game.HEIGHT/2-100);
             g.setFont(pauseFont);
-            g.drawString("GAME OVER", Game.WIDTH/2-100, Game.HEIGHT/2-100);
-            g.drawString("PRESS SPACE TO RETURN", Game.WIDTH/2-300, Game.HEIGHT/2+50);
+            g.setColor(Color.BLACK);
+            g.drawString("Your Score was: " + fb.getScore(), Game.WIDTH / 2 - 200, Game.HEIGHT / 2);
+            g.drawString("PRESS SPACE TO RETURN", Game.WIDTH/2-180, Game.HEIGHT/2+50);
         }
     }
 }
