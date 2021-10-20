@@ -17,7 +17,7 @@ public class Scoreboard extends JFrame{
         setContentPane(mainPanel);
         pack();
         setVisible(true);
-        String s = String.valueOf(Game.highscore);
+        String s = String.valueOf(Game.highscore-40);
         numberlabel.setText(s);
 
         backbutton.addActionListener(new ActionListener() {

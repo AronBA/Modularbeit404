@@ -23,7 +23,7 @@ public class Game implements ActionListener, KeyListener{
     private boolean paused;
 
     public void go() {
-        frame = new JFrame("Flappy Bird");
+        frame = new JFrame("Crappy Bird");
         bird = new Bird();
         rects = new ArrayList<>();
         panel = new Panel(this, bird, rects);
@@ -89,21 +89,6 @@ public class Game implements ActionListener, KeyListener{
                 paused = true;
             }
         }
-    }
-
-    public void ScoreboardWriter() throws IOException {
-        File myObj = new File("Scoreboard.txt");
-        FileWriter myWriter = new FileWriter(myObj);
-        myWriter.write(time/10);
-        myWriter.close();
-        Scanner myReader = new Scanner(myObj);
-        while (myReader.hasNextLine()) {
-            String data = myReader.nextLine();
-        }
-        myReader.close();
-    }
-    public void Scoreboard(){
-
     }
 
     @Override
