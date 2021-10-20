@@ -4,7 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class Game implements ActionListener, KeyListener{
 
@@ -83,9 +87,23 @@ public class Game implements ActionListener, KeyListener{
                     highscore = time/10;
                 }
                 paused = true;
-
             }
         }
+    }
+
+    public void ScoreboardWriter() throws IOException {
+        File myObj = new File("Scoreboard.txt");
+        FileWriter myWriter = new FileWriter(myObj);
+        myWriter.write(time/10);
+        myWriter.close();
+        Scanner myReader = new Scanner(myObj);
+        while (myReader.hasNextLine()) {
+            String data = myReader.nextLine();
+        }
+        myReader.close();
+    }
+    public void Scoreboard(){
+
     }
 
     @Override
