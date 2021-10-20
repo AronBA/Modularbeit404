@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Game implements ActionListener, KeyListener{
 
     public static final int FPS = 60, WIDTH = 1600, HEIGHT = 900;
-    public static int highscore = 0;
+    public static int highscore;
     private Bird bird;
     private JFrame frame;
     private JPanel panel;

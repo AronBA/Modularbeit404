@@ -12,6 +12,7 @@ public class Panel extends JPanel {
     public static Color bg;
     public static Color Pipes;
     public static final int PIPE_W = 50, PIPE_H = 30;
+    public static String gameOver, score, Return;
 
 
 
@@ -39,23 +40,26 @@ public class Panel extends JPanel {
                 g2d.translate(0, r.height);
                 g2d.rotate(Math.PI);
             }
-            //g2d.drawRect(-PIPE_W/2, PIPE_H/2, Panel.PIPE_W, r.height);
             g2d.setTransform(old);
         }
         g.setFont(scoreFont);
         g.setColor(Color.BLACK);
         g.drawString("Score: "+fb.getScore(), 10, 20);
 
+        gameOver = "GAME OVER";
+        score = "Your Score was: " + fb.getScore();
+        Return = "PRESS SPACE TO RETURN";
+
         if(fb.paused()) {
             bg = new Color(65, 75, 141);
             Pipes = new Color(24, 122, 42);
             g.setFont(overFont);
             g.setColor(Color.RED);
-            g.drawString("GAME OVER", Game.WIDTH/2-200, Game.HEIGHT/2-100);
+            g.drawString(gameOver, Game.WIDTH/2-220, Game.HEIGHT/2-100);
             g.setFont(pauseFont);
             g.setColor(Color.BLACK);
-            g.drawString("Your Score was: " + fb.getScore(), Game.WIDTH / 2 - 200, Game.HEIGHT / 2);
-            g.drawString("PRESS SPACE TO RETURN", Game.WIDTH/2-180, Game.HEIGHT/2+50);
+            g.drawString(score, Game.WIDTH / 2-140, Game.HEIGHT / 2);
+            g.drawString(Return, Game.WIDTH/2-200, Game.HEIGHT/2+50);
         }
     }
 }
