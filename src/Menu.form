@@ -6,7 +6,7 @@
       <xy x="20" y="20" width="1098" height="400"/>
     </constraints>
     <properties>
-      <background color="-13680348"/>
+      <background color="-10524245"/>
       <font/>
       <foreground color="-4474701"/>
       <preferredSize width="1600" height="900"/>
@@ -26,22 +26,29 @@
           <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-13777591"/>
+          <focusable value="false"/>
+          <foreground color="-12763843"/>
           <text value="Exit"/>
-        </properties>
-      </component>
-      <component id="f4f94" class="javax.swing.JButton" binding="playButton" default-binding="true">
-        <constraints>
-          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Play"/>
         </properties>
       </component>
       <component id="1fbc0" class="javax.swing.JButton" binding="scoreboardButton" default-binding="true">
         <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-13777591"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
+          <defaultCapable value="false"/>
+          <doubleBuffered value="false"/>
+          <enabled value="true"/>
+          <focusCycleRoot value="true"/>
+          <focusPainted value="true"/>
+          <focusTraversalPolicyProvider value="true"/>
+          <focusable value="false"/>
+          <foreground color="-12763843"/>
+          <selected value="false"/>
           <text value="Scoreboard"/>
         </properties>
       </component>
@@ -50,11 +57,11 @@
           <grid row="1" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-13680348"/>
+          <background color="-13777591"/>
           <enabled value="false"/>
-          <font name="Goudy Stout" size="72" style="1"/>
-          <foreground color="-4773189"/>
-          <opaque value="true"/>
+          <font name="Arial" size="72" style="1"/>
+          <foreground color="-12763843"/>
+          <opaque value="false"/>
           <text value="Crappy Bird"/>
         </properties>
       </component>
@@ -118,6 +125,16 @@
           <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
+      <component id="f4f94" class="javax.swing.JButton" binding="playButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-13777591"/>
+          <foreground color="-12763843"/>
+          <text value="Play"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

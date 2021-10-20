@@ -8,8 +8,9 @@ public class Panel extends JPanel {
     private final Bird bird;
     private final ArrayList<Rectangle> rects;
     private final Game fb;
-    private final Font scoreFont;
-    public static final Color bg = new Color(31, 66, 210);
+    private final Font scoreFont, pauseFont;
+    public static Color bg;
+    public static Color Pipes;
     public static final int PIPE_W = 50, PIPE_H = 30;
 
 
@@ -19,7 +20,7 @@ public class Panel extends JPanel {
         this.bird = bird;
         this.rects = rects;
         scoreFont = new Font("Arial", Font.BOLD, 18);
-
+        pauseFont = new Font("Arial", Font.BOLD, 48);
 
     }
     @Override
@@ -29,7 +30,7 @@ public class Panel extends JPanel {
         bird.update(g);
         for(Rectangle r : rects) {
             Graphics2D g2d = (Graphics2D) g;
-            g2d.setColor(Color.GREEN);
+            g2d.setColor(Pipes);
             g2d.fillRect(r.x, r.y, r.width, r.height);
             AffineTransform old = g2d.getTransform();
             g2d.translate(r.x+PIPE_W/2, r.y+PIPE_H/2);
@@ -43,7 +44,12 @@ public class Panel extends JPanel {
         g.setFont(scoreFont);
         g.setColor(Color.BLACK);
         g.drawString("Score: "+fb.getScore(), 10, 20);
-
-
+        if(fb.paused()) {
+            bg = new Color(65, 75, 141);
+            Pipes = new Color(24, 122, 42);
+            g.setFont(pauseFont);
+            g.drawString("GAME OVER", Game.WIDTH/2-100, Game.HEIGHT/2-100);
+            g.drawString("PRESS SPACE TO RETURN", Game.WIDTH/2-300, Game.HEIGHT/2+50);
+        }
     }
 }

@@ -30,6 +30,8 @@ public class Game implements ActionListener, KeyListener{
         frame.setResizable(false);
         frame.setVisible(true);
         frame.addKeyListener(this);
+        Panel.bg = new Color(95, 105, 171);
+        Panel.Pipes = new Color(45, 197, 73);
 
         paused = false;
 
@@ -80,15 +82,8 @@ public class Game implements ActionListener, KeyListener{
                 if ((time/10) > highscore){
                     highscore = time/10;
                 }
-                frame.dispose();
-                JFrame frame = new Menu("Crappy Bird");
-                frame.setVisible(true);
-
-                rects.clear();
-                bird.reset();
-                time = 0;
-                scroll = 0;
                 paused = true;
+
             }
         }
     }
@@ -101,14 +96,26 @@ public class Game implements ActionListener, KeyListener{
         else if(e.getKeyCode()==KeyEvent.VK_DOWN){
             bird.down();
         }
-
+        else if(e.getKeyCode()==KeyEvent.VK_SPACE){
+            if(paused) {
+                frame.dispose();
+                JFrame frame = new Menu("Crappy Bird");
+                frame.setVisible(true);
+                rects.clear();
+                bird.reset();
+                time = 0;
+                scroll = 0;
+                paused = false;
+            }
+        }
     }
 
     public void keyReleased(KeyEvent e) { }
-    public void keyTyped(KeyEvent e) {
-
-    }
+    public void keyTyped(KeyEvent e) {}
     public int getScore() {
         return time/10;
+    }
+    public boolean paused() {
+        return paused;
     }
 }
