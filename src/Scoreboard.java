@@ -10,6 +10,7 @@ public class Scoreboard extends JFrame{
 
     public Scoreboard(String title){
         super(title);
+        setIconImage(Game.icon.getImage());
         setSize(Game.width,Game.height);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

@@ -11,6 +11,7 @@ public class Menu extends JFrame {
 
     public Menu(String title){
         super(title);
+        setIconImage(Game.icon.getImage());
         setSize(1600,900);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

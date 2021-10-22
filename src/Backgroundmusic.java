@@ -6,7 +6,6 @@ public class Backgroundmusic
 {
     public void music() throws UnsupportedAudioFileException, IOException, LineUnavailableException
     {
-
         File file = new File("theme.wav");
 
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);

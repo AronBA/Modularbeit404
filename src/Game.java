@@ -18,15 +18,18 @@ public class Game implements ActionListener, KeyListener{
     private JPanel panel;
     private ArrayList<Rectangle> pipes;
     private int time, scroll;
+    public static ImageIcon icon = new ImageIcon("icon.png");
 
     private boolean paused;
 
     public void start() {
+
         frame = new JFrame("Crappy Bird");
         bird = new Bird();
         pipes = new ArrayList<>();
         panel = new Panel(this, bird, pipes);
         frame.add(panel);
+        frame.setIconImage(icon.getImage());
         frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
