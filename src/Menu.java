@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+//Klasse für das Hauptmenu
 public class Menu extends JFrame {
     private JPanel mainPanel;
     private JButton playButton;

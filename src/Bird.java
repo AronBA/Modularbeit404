@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-
+//Klasse um den Bird zu erstellen
 public class Bird extends JPanel {
     public int x, y, vx, vy;
     public static final int rad = 25;

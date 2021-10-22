@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
-
+//Klasse für die Pipes, GameOver
 public class Panel extends JPanel {
 
     private final Bird bird;
@@ -25,7 +25,7 @@ public class Panel extends JPanel {
         fontover = new Font("Arial", Font.BOLD, 72);
 
     }
-    @Override
+    @Override //Funktion um die Röhren zu zeichnen
     public void paintComponent(Graphics g) {
         g.setColor(bg);
         g.fillRect(0,0, Game.width, Game.height);
@@ -50,7 +50,7 @@ public class Panel extends JPanel {
         score = "Your Score was: " + fb.getScore();
         returnback = "PRESS SPACE TO RETURN";
 
-        if(fb.paused()) {
+        if(fb.paused()) { //Darstellung des GameOver textes
             bg = new Color(65, 75, 141);
             pipescolor = new Color(24, 122, 42);
             g.setFont(fontover);

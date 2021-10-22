@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+//Klasse für das Scoreboard
 public class Scoreboard extends JFrame{
     private JPanel mainPanel;
     private JLabel scorelabel;

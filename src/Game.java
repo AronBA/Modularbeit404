@@ -5,10 +5,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.*;
-
+//Klasse für das Spiel
 public class Game implements ActionListener, KeyListener{
 
     public static final int fps = 60, width = 1600, height = 900;
@@ -21,7 +20,7 @@ public class Game implements ActionListener, KeyListener{
     public static ImageIcon icon = new ImageIcon("icon.png");
 
     private boolean paused;
-
+//Funktion zum Starten des Spieles
     public void start() {
 
         frame = new JFrame("Crappy Bird");
@@ -55,14 +54,14 @@ public class Game implements ActionListener, KeyListener{
 
 
     }
+    //Funktion zur Generierung der Pipes
     public void actionPerformed(ActionEvent e) {
-
 
         panel.repaint();
         if(!paused) {
             bird.movement();
             if(scroll % 90 == 0) {
-                int h1 = (int) ((Math.random()* height)/5 + (0.3*Math.random())* height);
+                int h1 = (int) ((Math.random()* height)/5 + (0.3*Math.random())* height); //Algorythmus zur Generierung der Höhe der Röhren
                 int h2 = height /(3+time/2000);
                 Rectangle r = new Rectangle(width, 0, Panel.pipeW, h1);
                 Rectangle r2 = new Rectangle(width, h1+h2, Panel.pipeW, height -(h1+h2));
@@ -71,6 +70,7 @@ public class Game implements ActionListener, KeyListener{
             }
             ArrayList<Rectangle> toRemove = new ArrayList<>();
             boolean game = true;
+            //Löschen der Pipes, beendigung des Spiels und Spiel fortschritt
             for(Rectangle r : pipes) {
                 r.x-=3;
                 if(r.x + r.width <= 0) {
@@ -97,7 +97,7 @@ public class Game implements ActionListener, KeyListener{
         }
     }
 
-    @Override
+    @Override //Steuerung des Spielers
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode()==KeyEvent.VK_UP) {
             bird.up();
@@ -105,6 +105,7 @@ public class Game implements ActionListener, KeyListener{
         else if(e.getKeyCode()==KeyEvent.VK_DOWN){
             bird.down();
         }
+        //Reset der Werte bei beendigung des Spiels
         else if(e.getKeyCode()==KeyEvent.VK_SPACE){
             if(paused) {
                 frame.dispose();
