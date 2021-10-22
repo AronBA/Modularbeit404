@@ -8,11 +8,11 @@ public class Panel extends JPanel {
     private final Bird bird;
     private final ArrayList<Rectangle> rects;
     private final Game fb;
-    private final Font scoreFont, pauseFont, overFont;
+    private final Font fontscore, fontpause, fontover;
     public static Color bg;
-    public static Color Pipes;
-    public static final int PIPE_W = 50, PIPE_H = 30;
-    public static String gameOver, score, Return;
+    public static Color pipescolor;
+    public static final int pipeW = 50, pipeH = 30;
+    public static String gameover, score, returnback;
 
 
 
@@ -20,46 +20,46 @@ public class Panel extends JPanel {
         this.fb = fb;
         this.bird = bird;
         this.rects = rects;
-        scoreFont = new Font("Arial", Font.BOLD, 18);
-        pauseFont = new Font("Arial", Font.BOLD, 30);
-        overFont = new Font("Arial", Font.BOLD, 72);
+        fontscore = new Font("Arial", Font.BOLD, 18);
+        fontpause = new Font("Arial", Font.BOLD, 30);
+        fontover = new Font("Arial", Font.BOLD, 72);
 
     }
     @Override
     public void paintComponent(Graphics g) {
         g.setColor(bg);
-        g.fillRect(0,0, Game.WIDTH, Game.HEIGHT);
-        bird.update(g);
+        g.fillRect(0,0, Game.width, Game.height);
+        bird.player(g);
         for(Rectangle r : rects) {
             Graphics2D g2d = (Graphics2D) g;
-            g2d.setColor(Pipes);
+            g2d.setColor(pipescolor);
             g2d.fillRect(r.x, r.y, r.width, r.height);
             AffineTransform old = g2d.getTransform();
-            g2d.translate(r.x+PIPE_W/2, r.y+PIPE_H/2);
-            if(r.y < Game.HEIGHT/2) {
+            g2d.translate(r.x+ pipeW /2, r.y+ pipeH /2);
+            if(r.y < Game.height /2) {
                 g2d.translate(0, r.height);
                 g2d.rotate(Math.PI);
             }
             g2d.setTransform(old);
         }
-        g.setFont(scoreFont);
+        g.setFont(fontscore);
         g.setColor(Color.BLACK);
         g.drawString("Score: "+fb.getScore(), 10, 20);
 
-        gameOver = "GAME OVER";
+        gameover = "GAME OVER";
         score = "Your Score was: " + fb.getScore();
-        Return = "PRESS SPACE TO RETURN";
+        returnback = "PRESS SPACE TO RETURN";
 
         if(fb.paused()) {
             bg = new Color(65, 75, 141);
-            Pipes = new Color(24, 122, 42);
-            g.setFont(overFont);
+            pipescolor = new Color(24, 122, 42);
+            g.setFont(fontover);
             g.setColor(Color.RED);
-            g.drawString(gameOver, Game.WIDTH/2-220, Game.HEIGHT/2-100);
-            g.setFont(pauseFont);
+            g.drawString(gameover, Game.width /2-220, Game.height /2-100);
+            g.setFont(fontpause);
             g.setColor(Color.BLACK);
-            g.drawString(score, Game.WIDTH / 2-140, Game.HEIGHT / 2);
-            g.drawString(Return, Game.WIDTH/2-200, Game.HEIGHT/2+50);
+            g.drawString(score, Game.width / 2-140, Game.height / 2);
+            g.drawString(returnback, Game.width /2-200, Game.height /2+50);
         }
     }
 }

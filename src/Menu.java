@@ -21,7 +21,7 @@ public class Menu extends JFrame {
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Game().go();
+                new Game().start();
                 dispose();
             }
         });

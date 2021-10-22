@@ -3,19 +3,20 @@ import java.awt.*;
 
 public class Bird extends JPanel {
     public int x, y, vx, vy;
-    public static final int RAD = 25;
+    public static final int rad = 25;
     public Bird(){
-        x = Game.WIDTH/4;
-        y = Game.HEIGHT/4;
+        x = Game.width /4;
+        y = Game.height /4;
+
     }
-    public void physics() {
+    public void movement() {
         x+=vx;
         y+=vy;
     }
 
-    public void update(Graphics g) {
+    public void player(Graphics g) {
         g.setColor(Color.YELLOW);
-        g.fillOval(Math.round(x-RAD),Math.round(y-RAD),2*RAD,2*RAD);
+        g.fillOval(Math.round(x-rad),Math.round(y-rad),2*rad,2*rad);
     }
 
     public void up() {
@@ -27,8 +28,8 @@ public class Bird extends JPanel {
     }
 
     public void reset() {
-        x = Game.WIDTH/4;
-        y = Game.HEIGHT/4;
+        x = Game.width /4;
+        y = Game.height /4;
         vx = vy = 0;
     }
 }

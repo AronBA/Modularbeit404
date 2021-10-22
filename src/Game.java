@@ -4,49 +4,52 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
-import java.io.FileWriter;
 import java.util.ArrayList;
+import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
+import javax.sound.sampled.*;
 
 public class Game implements ActionListener, KeyListener{
 
-    public static final int FPS = 60, WIDTH = 1600, HEIGHT = 900;
+    public static final int fps = 60, width = 1600, height = 900;
     public static int highscore;
     private Bird bird;
     private JFrame frame;
     private JPanel panel;
-    private ArrayList<Rectangle> rects;
+    private ArrayList<Rectangle> pipes;
     private int time, scroll;
 
     private boolean paused;
 
-    public void go() {
+    public void start() {
         frame = new JFrame("Crappy Bird");
         bird = new Bird();
-        rects = new ArrayList<>();
-        panel = new Panel(this, bird, rects);
+        pipes = new ArrayList<>();
+        panel = new Panel(this, bird, pipes);
         frame.add(panel);
-        frame.setSize(WIDTH, HEIGHT);
+        frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
         frame.addKeyListener(this);
         Panel.bg = new Color(95, 105, 171);
-        Panel.Pipes = new Color(45, 197, 73);
+        Panel.pipescolor = new Color(45, 197, 73);
 
         paused = false;
 
-        Timer t = new Timer(500 / FPS, this);
+        Timer t = new Timer(500 / fps, this);
         t.start();
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
+
         JFrame frame = new Menu("Crappy Bird");
         frame.setVisible(true);
+        Backgroundmusic music = new Backgroundmusic();
+        music.music();
+
 
     }
     public void actionPerformed(ActionEvent e) {
@@ -54,18 +57,18 @@ public class Game implements ActionListener, KeyListener{
 
         panel.repaint();
         if(!paused) {
-            bird.physics();
+            bird.movement();
             if(scroll % 90 == 0) {
-                int h1 = (int) ((Math.random()*HEIGHT)/5 + (0.3*Math.random())*HEIGHT);
-                int h2 = HEIGHT/(3+time/2000);
-                Rectangle r = new Rectangle(WIDTH, 0, Panel.PIPE_W, h1);
-                Rectangle r2 = new Rectangle(WIDTH, h1+h2, Panel.PIPE_W, HEIGHT-(h1+h2));
-                rects.add(r);
-                rects.add(r2);
+                int h1 = (int) ((Math.random()* height)/5 + (0.3*Math.random())* height);
+                int h2 = height /(3+time/2000);
+                Rectangle r = new Rectangle(width, 0, Panel.pipeW, h1);
+                Rectangle r2 = new Rectangle(width, h1+h2, Panel.pipeW, height -(h1+h2));
+                pipes.add(r);
+                pipes.add(r2);
             }
             ArrayList<Rectangle> toRemove = new ArrayList<>();
             boolean game = true;
-            for(Rectangle r : rects) {
+            for(Rectangle r : pipes) {
                 r.x-=3;
                 if(r.x + r.width <= 0) {
                     toRemove.add(r);
@@ -74,17 +77,17 @@ public class Game implements ActionListener, KeyListener{
                     game = false;
                 }
             }
-            rects.removeAll(toRemove);
+            pipes.removeAll(toRemove);
             time++;
             scroll++;
 
-            if(bird.y > HEIGHT || bird.y+ Bird.RAD < 0) {
+            if(bird.y > height || bird.y+ Bird.rad < 0) {
                 game = false;
             }
 
             if(!game) {
                 if ((time/10) > highscore){
-                    highscore = time/10;
+                    highscore = getScore();
                 }
                 paused = true;
             }
@@ -104,7 +107,7 @@ public class Game implements ActionListener, KeyListener{
                 frame.dispose();
                 JFrame frame = new Menu("Crappy Bird");
                 frame.setVisible(true);
-                rects.clear();
+                pipes.clear();
                 bird.reset();
                 time = 0;
                 scroll = 0;

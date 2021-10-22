@@ -10,14 +10,14 @@ public class Scoreboard extends JFrame{
 
     public Scoreboard(String title){
         super(title);
-        setSize(Game.WIDTH,Game.HEIGHT);
+        setSize(Game.width,Game.height);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         setContentPane(mainPanel);
         pack();
         setVisible(true);
-        String s = String.valueOf(Game.highscore-40);
+        String s = String.valueOf(Game.highscore);
         numberlabel.setText(s);
 
         backbutton.addActionListener(new ActionListener() {
