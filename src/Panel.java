@@ -1,6 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 //Klasse für die Pipes, GameOver
 public class Panel extends JPanel {
@@ -13,16 +16,23 @@ public class Panel extends JPanel {
     public static Color pipescolor;
     public static final int pipeW = 50, pipeH = 30;
     public static String gameover, score, returnback;
+    private Image Tower;
 
 
 
-    public Panel(Game fb, Bird bird, ArrayList<Rectangle> rects) {
+    public Panel(Game fb, Bird bird, ArrayList<Rectangle> rects){
         this.fb = fb;
         this.bird = bird;
         this.rects = rects;
         fontscore = new Font("Arial", Font.BOLD, 18);
         fontpause = new Font("Arial", Font.BOLD, 30);
         fontover = new Font("Arial", Font.BOLD, 72);
+        try {
+            Tower = ImageIO.read(new File("174-1744312_wtc-1-skyscraper.png"));
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
 
     }
     @Override //Funktion um die Röhren zu zeichnen
@@ -32,22 +42,23 @@ public class Panel extends JPanel {
         bird.player(g);
         for(Rectangle r : rects) {
             Graphics2D g2d = (Graphics2D) g;
-            g2d.setColor(pipescolor);
-            g2d.fillRect(r.x, r.y, r.width, r.height);
+            //g2d.setColor(pipescolor);
+            //g2d.fillRect(r.x, r.y, r.width, r.height);
             AffineTransform old = g2d.getTransform();
             g2d.translate(r.x+ pipeW /2, r.y+ pipeH /2);
             if(r.y < Game.height /2) {
                 g2d.translate(0, r.height);
                 g2d.rotate(Math.PI);
             }
+            g2d.drawImage(Tower, -pipeW/2, pipeH/2, pipeW, r.height, null);
             g2d.setTransform(old);
         }
         g.setFont(fontscore);
         g.setColor(Color.BLACK);
-        g.drawString("Score: "+fb.getScore(), 10, 20);
+        g.drawString("Kills: "+fb.getScore(), 10, 20);
 
         gameover = "GAME OVER";
-        score = "Your Score was: " + fb.getScore();
+        score = "You Killed " + fb.getScore() + " People.";
         returnback = "PRESS SPACE TO RETURN";
 
         if(fb.paused()) { //Darstellung des GameOver textes
